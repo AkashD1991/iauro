@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
-import { Paper, makeStyles, TableBody, TableRow, TableCell} from '@material-ui/core';
+import { Paper, makeStyles, TableBody, TableRow, TableCell, Typography} from '@material-ui/core';
 
 import Controls from './Controls/Controls';
 import * as studentService from './Service/studentService';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
-import useTable from '../components/Controls/useTable';
+import useTable from './useTable';
 import RegisterForm from './RegisterForm';
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        marginLeft: theme.spacing(1)
+    },
     pageContent: {
         margin: theme.spacing(5),
         padding: theme.spacing(3),
@@ -53,20 +56,20 @@ const addOrEdit = (student) =>{
     setRecords(studentService.getAllStudents())
 }
 
-const deleteEmp = (id) => {
+const deleteStud = (id) => {
     studentService.deleteStudent(id)
     setRecordForEdit(null)
     setRecords(studentService.getAllStudents())
 }
 
 const openForEdit = item => {
-    console.log(item);
     setRecordForEdit(item)
 }
 
     return (
         <>
        <Paper className={classes.pageContent}>
+       <Typography className={classes.root} variant="h5" component="h5"> Student Register </Typography>
        <RegisterForm
             recordForEdit={recordForEdit}
             addOrEdit={addOrEdit}
@@ -90,7 +93,7 @@ const openForEdit = item => {
                                 </Controls.ActionButton>
                                 <Controls.ActionButton
                                     color="secondary"
-                                    onClick={() => { deleteEmp(index) }}
+                                    onClick={() => { deleteStud(index) }}
                                     >
                                         <DeleteOutlinedIcon fontSize="small"/>
                                 </Controls.ActionButton>

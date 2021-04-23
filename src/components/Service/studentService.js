@@ -43,7 +43,6 @@ export function updateStudent(data) {
 }
 
 export function deleteStudent(id) {
-    window.alert(id);
     let students = getAllStudents();
     students.splice(id, 1);
     localStorage.setItem(KEYS.students, JSON.stringify(students));

@@ -1,7 +1,11 @@
 import React from 'react'
-import { Table, TableCell, TableHead, TableRow, makeStyles } from '@material-ui/core';
+import { Table, TableCell, TableHead, TableRow, makeStyles, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme =>({
+    root: {
+        marginLeft: theme.spacing(1),
+        marginBottom: theme.spacing(1)
+    },
     table: {
         marginTop: theme.spacing(3),
         '& thead th' : {
@@ -30,6 +34,7 @@ export default function useTable(records, headCells) {
 
     const TblHead = props => {
         return(<TableHead>
+            <Typography className={classes.root} variant="h5" component="h5"> Student Details </Typography>
             <TableRow>
                 {
                     headCells.map(headCell => (<TableCell key={headCell.id}>

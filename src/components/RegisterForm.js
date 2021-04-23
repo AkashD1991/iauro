@@ -59,7 +59,7 @@ export default function RegisterForm(props) {
         e.preventDefault()
         if(validate()){
             addOrEdit(values)
-            window.alert('testing...')
+            window.alert('Succesfully...')
         }
     }
     
